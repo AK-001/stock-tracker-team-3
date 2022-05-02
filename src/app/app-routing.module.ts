@@ -7,7 +7,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 
 const routes: Routes = [
   {path: '**', component: LoginPageComponent},
-  {path: '/admin-page', component: AdminPageComponent, canActivate: [MicrosoftLoginGuard]}];
+  {path: 'admin-page', component: AdminPageComponent, canActivate: [MicrosoftLoginGuard]}];
 // {path: '**', component: AnalystPageComponent}];
 
 @NgModule({

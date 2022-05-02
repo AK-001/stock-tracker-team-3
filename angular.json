@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "stock-tracker": {
+    "microsoft-login": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/stock-tracker",
+            "outputPath": "dist/microsoft-login",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,12 +24,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css" 
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "src/styles.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/jquery/dist/jquery.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "stock-tracker:build"
+            "browserTarget": "microsoft-login:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "stock-tracker:build:production"
+              "browserTarget": "microsoft-login:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "stock-tracker:build"
+            "browserTarget": "microsoft-login:build"
           }
         },
         "test": {
@@ -114,15 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "stock-tracker:serve"
+            "devServerTarget": "microsoft-login:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "stock-tracker:serve:production"
+              "devServerTarget": "microsoft-login:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "stock-tracker"
+  "defaultProject": "microsoft-login"
 }

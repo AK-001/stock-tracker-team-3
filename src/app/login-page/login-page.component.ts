@@ -1,3 +1,5 @@
+import { AuthenticationResult } from '@azure/msal-browser';
+import { MsalService } from '@azure/msal-angular';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: MsalService) { }
 
   ngOnInit(): void {
+  }
+  login() {
+    // this.authService.loginRedirect();
+
+    this.authService.loginPopup()
+      .subscribe((response: AuthenticationResult) => {
+        this.authService.instance.setActiveAccount(response.account);
+      });
   }
 
 }
