@@ -8,16 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPageComponent implements OnInit {
 
+  username: string | undefined;
+
   constructor(private authService: MsalService) { }
 
-  getName () : string {
+  getName () : any {
     if (this.authService.instance.getActiveAccount() == null) {
       return 'unknown'
     }
-    return this.authService.instance.getActiveAccount().username
+    return this.authService.instance.getActiveAccount()?.username;
   }
 
   ngOnInit(): void {
+    this.username = this.getName();
   }
 
 }

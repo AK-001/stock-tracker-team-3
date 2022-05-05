@@ -2,6 +2,7 @@
 import { AuthenticationResult } from '@azure/msal-browser';
 import { MsalService } from '@azure/msal-angular';
 import { Component, OnInit } from '@angular/core';
+import { HelloService } from './services/hello.service';
 
 @Component({
   selector: 'app-root',
@@ -11,20 +12,24 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   title = 'My Microsoft Login- Example';
+  message: string | undefined;
 
-  constructor(private authService: MsalService) {
+  constructor(private authService: MsalService, private helloService: HelloService) {
 
   }
   ngOnInit(): void {
-    this.authService.instance.handleRedirectPromise().then( res => {
+    this.authService.instance.handleRedirectPromise().then(res => {
       if (res != null && res.account != null) {
         this.authService.instance.setActiveAccount(res.account)
       }
     })
+    this.getHello();
   }
 
   isLoggedIn(): boolean {
-    return this.authService.instance.getActiveAccount() != null
+    const user = "ananthakrishnancse@gmail.com"
+    // return this.authService.instance.getActiveAccount() != null
+    return this.authService.instance.getActiveAccount()?.username == user;
   }
 
   login() {
@@ -38,5 +43,11 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.authService.logout()
+  }
+
+  getHello() {
+    this.helloService.getHello().subscribe((res) => {
+      this.message = res.message;
+    })
   }
 }
